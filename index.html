@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<style>
+body{
+    background: linear-gradient(45deg, white,blue);
+}
+.container{
+    width: 960px;
+    height: 75vh;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    border: solid black 2px;
+    position: relative;
+    left:15%;
+    
+}
+.form{
+    position: relative;
+    left: 40%;
+}
+h1{
+    text-align: center;
+}
+</style>
+    <head>
+        <title>Etch-a-Sketch</title>
+    </head>
+    <body>
+        <header>
+            <h1>Etch a Sketch</h1>
+        </header>
+        <form for="gridnumbers" class="form">
+        <input type="number" placeholder="Please enter the number of grids">
+        <button type="button" class="button">Create</button>
+        </form>
+        <div class="container"></div>
+    </body>
+<script>
+    let btn=document.querySelector("button");
+    btn.addEventListener("click", olustur);
+    function olustur(){
+        let number=document.querySelector("input").value;
+        console.log(number);
+        let container=document.querySelector(".container");
+        container.innerHTML=" ";
+        for (let i=0; i<number; i++){
+            for (let j=0; j<number; j++){
+                let div=document.createElement("div");
+                div.classList.add("created");
+                div.addEventListener("mouseenter",()=>{
+                div.style.backgroundColor="red";
+                });
+                div.style.border="black solid 1px";
+                container.appendChild(div);
+            }
+        }
+        container.style.gridTemplateColumns=`repeat(${number}, auto)`;
+    }
+    
+    
+
+    
+</script>
+</html>
+
